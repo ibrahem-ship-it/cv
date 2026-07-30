@@ -1,0 +1,543 @@
+<!DOCTYPE html>
+<html lang="en" class="scroll-smooth">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Ibrahim Youssef | Mechatronics & Tech Trainer</title>
+    
+    <!-- Fonts: Inter -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;600;700;800&display=swap" rel="stylesheet">
+    
+    <!-- Icons: FontAwesome -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    
+    <!-- Tailwind CSS -->
+    <script src="https://cdn.tailwindcss.com"></script>
+    
+    <!-- Tailwind Configuration -->
+    <script>
+        tailwind.config = {
+            theme: {
+                extend: {
+                    fontFamily: {
+                        sans: ['Inter', 'sans-serif'],
+                    },
+                    colors: {
+                        brand: {
+                            light: '#38bdf8', // sky-400
+                            DEFAULT: '#0ea5e9', // sky-500
+                            dark: '#0284c7', // sky-600
+                        },
+                        dark: {
+                            bg: '#0f172a', // slate-900
+                            card: '#1e293b', // slate-800
+                            border: '#334155', // slate-700
+                        }
+                    }
+                }
+            }
+        }
+    </script>
+
+    <style>
+        /* Custom scrollbar for webkit */
+        ::-webkit-scrollbar {
+            width: 8px;
+        }
+        ::-webkit-scrollbar-track {
+            background: #0f172a; 
+        }
+        ::-webkit-scrollbar-thumb {
+            background: #334155; 
+            border-radius: 4px;
+        }
+        ::-webkit-scrollbar-thumb:hover {
+            background: #475569; 
+        }
+        
+        .gradient-text {
+            background: linear-gradient(to right, #38bdf8, #818cf8);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+        }
+        
+        .blob {
+            animation: blob 7s infinite;
+        }
+        
+        @keyframes blob {
+            0% { transform: translate(0px, 0px) scale(1); }
+            33% { transform: translate(30px, -50px) scale(1.1); }
+            66% { transform: translate(-20px, 20px) scale(0.9); }
+            100% { transform: translate(0px, 0px) scale(1); }
+        }
+    </style>
+</head>
+<body class="bg-dark-bg text-slate-300 font-sans antialiased selection:bg-brand-DEFAULT selection:text-white overflow-x-hidden">
+
+    <!-- Navigation -->
+    <nav class="fixed w-full z-50 bg-dark-bg/80 backdrop-blur-md border-b border-dark-border transition-all duration-300" id="navbar">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="flex justify-between items-center h-20">
+                <div class="flex-shrink-0 flex items-center gap-2">
+                    <div class="w-10 h-10 rounded-xl bg-gradient-to-br from-brand-light to-indigo-500 flex items-center justify-center text-white font-bold text-xl shadow-lg">
+                        IY
+                    </div>
+                    <span class="font-bold text-xl text-white tracking-tight">Ibrahim <span class="text-brand-light">Youssef</span></span>
+                </div>
+                
+                <!-- Desktop Menu -->
+                <div class="hidden md:flex items-center space-x-8">
+                    <a href="#about" class="text-sm font-medium hover:text-brand-light transition-colors">About</a>
+                    <a href="#experience" class="text-sm font-medium hover:text-brand-light transition-colors">Experience</a>
+                    <a href="#projects" class="text-sm font-medium hover:text-brand-light transition-colors">Projects</a>
+                    <a href="#skills" class="text-sm font-medium hover:text-brand-light transition-colors">Skills</a>
+                    <a href="#contact" class="px-5 py-2.5 rounded-full bg-brand-DEFAULT hover:bg-brand-dark text-white text-sm font-medium transition-all shadow-lg shadow-brand-DEFAULT/30 hover:shadow-brand-DEFAULT/50">Contact Me</a>
+                </div>
+
+                <!-- Mobile Menu Button -->
+                <div class="md:hidden flex items-center">
+                    <button id="mobile-menu-btn" class="text-slate-300 hover:text-white focus:outline-none">
+                        <i class="fa-solid fa-bars text-2xl"></i>
+                    </button>
+                </div>
+            </div>
+        </div>
+        
+        <!-- Mobile Menu (Hidden by default) -->
+        <div id="mobile-menu" class="hidden md:hidden bg-dark-card border-b border-dark-border">
+            <div class="px-4 pt-2 pb-6 space-y-2">
+                <a href="#about" class="block px-3 py-2 rounded-lg text-base font-medium hover:bg-dark-border hover:text-white">About</a>
+                <a href="#experience" class="block px-3 py-2 rounded-lg text-base font-medium hover:bg-dark-border hover:text-white">Experience</a>
+                <a href="#projects" class="block px-3 py-2 rounded-lg text-base font-medium hover:bg-dark-border hover:text-white">Projects</a>
+                <a href="#skills" class="block px-3 py-2 rounded-lg text-base font-medium hover:bg-dark-border hover:text-white">Skills</a>
+                <a href="#contact" class="block px-3 py-2 mt-4 text-center rounded-xl bg-brand-DEFAULT text-white font-medium">Contact Me</a>
+            </div>
+        </div>
+    </nav>
+
+    <!-- Hero Section -->
+    <section class="relative pt-32 pb-20 lg:pt-48 lg:pb-32 overflow-hidden min-h-screen flex items-center">
+        <!-- Background Effects -->
+        <div class="absolute top-0 left-0 w-full h-full overflow-hidden -z-10">
+            <div class="absolute top-[-10%] left-[-10%] w-96 h-96 bg-brand-DEFAULT/20 rounded-full mix-blend-screen filter blur-[100px] opacity-70 blob"></div>
+            <div class="absolute top-[20%] right-[-10%] w-96 h-96 bg-indigo-500/20 rounded-full mix-blend-screen filter blur-[100px] opacity-70 blob" style="animation-delay: 2s;"></div>
+        </div>
+
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
+            <div class="grid grid-cols-1 lg:grid-cols-2 gap-12 items-center">
+                
+                <!-- Text Content -->
+                <div class="order-2 lg:order-1 text-center lg:text-left">
+                    <div class="inline-flex items-center gap-2 px-4 py-2 rounded-full bg-dark-card border border-dark-border text-sm font-medium text-brand-light mb-6">
+                        <span class="relative flex h-3 w-3">
+                          <span class="animate-ping absolute inline-flex h-full w-full rounded-full bg-brand-light opacity-75"></span>
+                          <span class="relative inline-flex rounded-full h-3 w-3 bg-brand-DEFAULT"></span>
+                        </span>
+                        Available for Opportunities
+                    </div>
+                    <h1 class="text-4xl sm:text-5xl lg:text-7xl font-extrabold text-white leading-tight tracking-tight mb-4">
+                        Hi, I'm <br class="hidden lg:block" />
+                        <span class="gradient-text">Ibrahim Youssef</span>
+                    </h1>
+                    <h2 class="text-xl sm:text-2xl text-slate-400 font-medium mb-6">
+                        Mechatronics Engineer | Founder of <span class="text-white font-bold">Robotech</span> <br class="hidden sm:block"/>
+                        & Certified Tech & IoT Trainer
+                    </h2>
+                    <p class="text-base sm:text-lg text-slate-400 mb-8 max-w-2xl mx-auto lg:mx-0 leading-relaxed">
+                        Empowering youth and professionals through hands-on technology training. Specializing in IoT, AI Integration, and Digital Fabrication to bridge the gap between academic knowledge and market needs.
+                    </p>
+                    <div class="flex flex-col sm:flex-row items-center gap-4 justify-center lg:justify-start">
+                        <a href="#projects" class="w-full sm:w-auto px-8 py-3.5 rounded-xl bg-brand-DEFAULT hover:bg-brand-dark text-white font-semibold transition-all shadow-lg shadow-brand-DEFAULT/30 flex items-center justify-center gap-2">
+                            View My Work <i class="fa-solid fa-arrow-right"></i>
+                        </a>
+                        <a href="#contact" class="w-full sm:w-auto px-8 py-3.5 rounded-xl bg-dark-card border border-dark-border hover:bg-dark-border text-white font-semibold transition-all flex items-center justify-center gap-2">
+                            Contact Me <i class="fa-regular fa-envelope"></i>
+                        </a>
+                    </div>
+                    
+                    <!-- Quick Stats -->
+                    <div class="grid grid-cols-3 gap-4 mt-12 pt-8 border-t border-dark-border">
+                        <div>
+                            <h3 class="text-3xl font-bold text-white mb-1">3+</h3>
+                            <p class="text-sm text-slate-400">Years Exp.</p>
+                        </div>
+                        <div>
+                            <h3 class="text-3xl font-bold text-white mb-1">3K+</h3>
+                            <p class="text-sm text-slate-400">Students Trained</p>
+                        </div>
+                        <div>
+                            <h3 class="text-3xl font-bold text-white mb-1">200+</h3>
+                            <p class="text-sm text-slate-400">Gov. Officials</p>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Image/Graphic -->
+                <div class="order-1 lg:order-2 flex justify-center lg:justify-end relative">
+                    <div class="w-64 h-64 sm:w-80 sm:h-80 lg:w-[28rem] lg:h-[28rem] relative">
+                        <!-- Abstract Tech Representation instead of personal photo to keep it clean and professional -->
+                        <div class="absolute inset-0 bg-gradient-to-tr from-brand-dark to-indigo-600 rounded-[2rem] transform rotate-3 scale-105 opacity-50 blur-lg"></div>
+                        <div class="absolute inset-0 bg-dark-card border border-dark-border rounded-[2rem] shadow-2xl flex flex-col items-center justify-center p-8 overflow-hidden group">
+                            
+                            <!-- Tech Grid Background Pattern -->
+                            <div class="absolute inset-0 opacity-10 bg-[radial-gradient(#fff_1px,transparent_1px)] [background-size:20px_20px]"></div>
+                            
+                            <i class="fa-solid fa-microchip text-7xl lg:text-9xl text-brand-light mb-6 transform group-hover:scale-110 transition-transform duration-500 relative z-10"></i>
+                            <div class="text-center relative z-10">
+                                <h3 class="text-xl font-bold text-white mb-2">Hardware & AI</h3>
+                                <p class="text-sm text-slate-400">Building the future, one circuit at a time.</p>
+                            </div>
+                            
+                            <!-- Floating Elements -->
+                            <div class="absolute top-8 left-8 w-12 h-12 bg-dark-bg border border-dark-border rounded-xl flex items-center justify-center animate-bounce shadow-lg" style="animation-duration: 3s;">
+                                <i class="fa-solid fa-code text-brand-light"></i>
+                            </div>
+                            <div class="absolute bottom-12 right-8 w-12 h-12 bg-dark-bg border border-dark-border rounded-xl flex items-center justify-center animate-bounce shadow-lg" style="animation-duration: 4s; animation-delay: 1s;">
+                                <i class="fa-brands fa-usb text-indigo-400"></i>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- About Section -->
+    <section id="about" class="py-20 bg-dark-bg">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="text-center mb-16">
+                <h2 class="text-3xl font-bold text-white mb-4">About Me</h2>
+                <div class="w-20 h-1 bg-brand-DEFAULT mx-auto rounded-full"></div>
+            </div>
+            
+            <div class="bg-dark-card border border-dark-border rounded-3xl p-8 lg:p-12 shadow-xl">
+                <div class="grid grid-cols-1 lg:grid-cols-3 gap-12">
+                    <div class="lg:col-span-2 space-y-6">
+                        <h3 class="text-2xl font-bold text-white">Bridging Engineering & Education</h3>
+                        <p class="text-lg text-slate-400 leading-relaxed">
+                            I am a highly accomplished Mechatronics Engineer and the Founder of <strong class="text-white">Robotech</strong>, an ed-tech and vocational training company. I specialize in bridging the gap between academic theory and market-ready technology skills.
+                        </p>
+                        <p class="text-lg text-slate-400 leading-relaxed">
+                            As a <strong class="text-brand-light">Certified Technical Trainer</strong> accredited by a UNESCO and National Universities Council recognized center (Ministry of Water Resources & Irrigation), I have a proven track record in designing IoT solutions, upgrading industrial systems with AI, and managing digital fabrication labs.
+                        </p>
+                        <p class="text-lg text-slate-400 leading-relaxed">
+                            My passion lies in empowering youth and professionals. I have successfully delivered hands-on bootcamps in Embedded Systems, 3D Printing, SolidWorks, and AI to thousands of students and government officials.
+                        </p>
+                    </div>
+                    
+                    <div class="space-y-6">
+                        <div class="bg-dark-bg rounded-2xl p-6 border border-dark-border">
+                            <h4 class="text-white font-bold mb-4 flex items-center gap-2"><i class="fa-solid fa-graduation-cap text-brand-DEFAULT"></i> Education</h4>
+                            <p class="text-slate-300 font-medium">B.Sc. Mechatronics Engineering</p>
+                            <p class="text-slate-500 text-sm">6 October (CSC) • Class of 2023</p>
+                            <p class="text-brand-light text-sm mt-2 font-medium">Graduation Project: A+</p>
+                        </div>
+                        
+                        <div class="bg-dark-bg rounded-2xl p-6 border border-dark-border">
+                            <h4 class="text-white font-bold mb-4 flex items-center gap-2"><i class="fa-solid fa-award text-brand-DEFAULT"></i> Key Recognition</h4>
+                            <p class="text-slate-300 text-sm leading-relaxed">
+                                Officially recognized and featured on the <strong class="text-white">Egyptian Cabinet's Official Facebook Page</strong> for leading high-impact training on AI-integrated Drones for the Ministry of Water Resources and Irrigation.
+                            </p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Experience Section -->
+    <section id="experience" class="py-20 bg-slate-900/50">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="text-center mb-16">
+                <h2 class="text-3xl font-bold text-white mb-4">Professional Experience</h2>
+                <div class="w-20 h-1 bg-brand-DEFAULT mx-auto rounded-full"></div>
+            </div>
+
+            <div class="space-y-8 relative before:absolute before:inset-0 before:ml-5 before:-translate-x-px md:before:mx-auto md:before:translate-x-0 before:h-full before:w-0.5 before:bg-gradient-to-b before:from-transparent before:via-dark-border before:to-transparent">
+                
+                <!-- Experience Item 1 -->
+                <div class="relative flex items-center justify-between md:justify-normal md:odd:flex-row-reverse group is-active">
+                    <!-- Icon -->
+                    <div class="flex items-center justify-center w-10 h-10 rounded-full border-4 border-dark-bg bg-brand-DEFAULT text-white shrink-0 md:order-1 md:group-odd:-translate-x-1/2 md:group-even:translate-x-1/2 shadow-lg z-10">
+                        <i class="fa-solid fa-rocket text-sm"></i>
+                    </div>
+                    <!-- Card -->
+                    <div class="w-[calc(100%-4rem)] md:w-[calc(50%-2.5rem)] p-6 rounded-2xl bg-dark-card border border-dark-border hover:border-brand-DEFAULT/50 transition-colors shadow-xl">
+                        <div class="flex flex-col sm:flex-row sm:items-center justify-between mb-2 gap-2">
+                            <h3 class="font-bold text-xl text-white">Founder & Lead Trainer</h3>
+                            <span class="px-3 py-1 bg-dark-bg text-brand-light text-xs font-semibold rounded-full border border-dark-border shrink-0">Present</span>
+                        </div>
+                        <h4 class="text-slate-400 font-medium mb-4">Robotech</h4>
+                        <ul class="space-y-2 text-sm text-slate-300">
+                            <li class="flex gap-2"><i class="fa-solid fa-check text-brand-DEFAULT mt-1"></i> <span>Founded an ed-tech and vocational training company bridging academic knowledge and market skills.</span></li>
+                            <li class="flex gap-2"><i class="fa-solid fa-check text-brand-DEFAULT mt-1"></i> <span>Developed and delivered comprehensive training modules covering IoT, digital fabrication, and AI.</span></li>
+                        </ul>
+                    </div>
+                </div>
+
+                <!-- Experience Item 2 -->
+                <div class="relative flex items-center justify-between md:justify-normal md:odd:flex-row-reverse group">
+                    <div class="flex items-center justify-center w-10 h-10 rounded-full border-4 border-dark-bg bg-indigo-500 text-white shrink-0 md:order-1 md:group-odd:-translate-x-1/2 md:group-even:translate-x-1/2 shadow-lg z-10">
+                        <i class="fa-solid fa-water text-sm"></i>
+                    </div>
+                    <div class="w-[calc(100%-4rem)] md:w-[calc(50%-2.5rem)] p-6 rounded-2xl bg-dark-card border border-dark-border hover:border-indigo-500/50 transition-colors shadow-xl">
+                        <div class="flex flex-col xl:flex-row xl:items-center justify-between mb-2 gap-2">
+                            <h3 class="font-bold text-xl text-white leading-tight">Certified Tech Trainer (IoT & AI)</h3>
+                            <span class="px-3 py-1 bg-dark-bg text-indigo-400 text-xs font-semibold rounded-full border border-dark-border shrink-0 w-fit">Present</span>
+                        </div>
+                        <h4 class="text-slate-400 font-medium mb-4 text-sm">Ministry of Water Resources & Irrigation (UNESCO Accredited)</h4>
+                        <ul class="space-y-2 text-sm text-slate-300">
+                            <li class="flex gap-2"><i class="fa-solid fa-check text-indigo-400 mt-1"></i> <span>Serve as an accredited trainer at a center officially recognized by UNESCO.</span></li>
+                            <li class="flex gap-2"><i class="fa-solid fa-check text-indigo-400 mt-1"></i> <span>Instructed courses from Arduino/ESP32 basics to HiveMQ cloud integration and AI-powered websites.</span></li>
+                        </ul>
+                    </div>
+                </div>
+
+                <!-- Experience Item 3 -->
+                <div class="relative flex items-center justify-between md:justify-normal md:odd:flex-row-reverse group">
+                    <div class="flex items-center justify-center w-10 h-10 rounded-full border-4 border-dark-bg bg-purple-500 text-white shrink-0 md:order-1 md:group-odd:-translate-x-1/2 md:group-even:translate-x-1/2 shadow-lg z-10">
+                        <i class="fa-solid fa-laptop-code text-sm"></i>
+                    </div>
+                    <div class="w-[calc(100%-4rem)] md:w-[calc(50%-2.5rem)] p-6 rounded-2xl bg-dark-card border border-dark-border hover:border-purple-500/50 transition-colors shadow-xl">
+                        <div class="flex flex-col sm:flex-row sm:items-center justify-between mb-2 gap-2">
+                            <h3 class="font-bold text-xl text-white">Digital Fabrication Trainer</h3>
+                            <span class="px-3 py-1 bg-dark-bg text-purple-400 text-xs font-semibold rounded-full border border-dark-border shrink-0">Present</span>
+                        </div>
+                        <h4 class="text-slate-400 font-medium mb-4 text-sm">Ministry of Communications & IT (Creativa - Beni Suef)</h4>
+                        <ul class="space-y-2 text-sm text-slate-300">
+                            <li class="flex gap-2"><i class="fa-solid fa-check text-purple-400 mt-1"></i> <span>Delivered hands-on bootcamps to ~90 students, enhancing practical engineering skills.</span></li>
+                            <li class="flex gap-2"><i class="fa-solid fa-check text-purple-400 mt-1"></i> <span>Designed tracks: "From Screen to Machine", "Hardware Bootcamp", and "AI Hardware".</span></li>
+                        </ul>
+                    </div>
+                </div>
+
+                <!-- Experience Item 4 -->
+                <div class="relative flex items-center justify-between md:justify-normal md:odd:flex-row-reverse group">
+                    <div class="flex items-center justify-center w-10 h-10 rounded-full border-4 border-dark-bg bg-slate-600 text-white shrink-0 md:order-1 md:group-odd:-translate-x-1/2 md:group-even:translate-x-1/2 shadow-lg z-10">
+                        <i class="fa-solid fa-gears text-sm"></i>
+                    </div>
+                    <div class="w-[calc(100%-4rem)] md:w-[calc(50%-2.5rem)] p-6 rounded-2xl bg-dark-card border border-dark-border hover:border-slate-500/50 transition-colors shadow-xl">
+                        <div class="flex flex-col xl:flex-row xl:items-center justify-between mb-2 gap-2">
+                            <h3 class="font-bold text-xl text-white">Mechatronics & CNC Engineer</h3>
+                            <span class="px-3 py-1 bg-dark-bg text-slate-400 text-xs font-semibold rounded-full border border-dark-border shrink-0 w-fit">2022 - 2023</span>
+                        </div>
+                        <h4 class="text-slate-400 font-medium mb-4 text-sm">CNC & Aluminum Fabrication Factory (6th of October)</h4>
+                        <ul class="space-y-2 text-sm text-slate-300">
+                            <li class="flex gap-2"><i class="fa-solid fa-check text-slate-400 mt-1"></i> <span>Supervised production lines and maintained complex mechatronic control systems.</span></li>
+                            <li class="flex gap-2"><i class="fa-solid fa-check text-slate-400 mt-1"></i> <span>Gained hands-on industrial experience in CNC machining and material cutting.</span></li>
+                        </ul>
+                    </div>
+                </div>
+
+            </div>
+        </div>
+    </section>
+
+    <!-- Projects Section -->
+    <section id="projects" class="py-20 bg-dark-bg">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="text-center mb-16">
+                <h2 class="text-3xl font-bold text-white mb-4">Key Projects & Bootcamps</h2>
+                <div class="w-20 h-1 bg-brand-DEFAULT mx-auto rounded-full"></div>
+                <p class="text-slate-400 mt-4 max-w-2xl mx-auto">Real-world applications of IoT, AI, and comprehensive training programs designed to build the next generation of engineers.</p>
+            </div>
+
+            <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
+                
+                <!-- Project 1 -->
+                <div class="bg-dark-card border border-dark-border rounded-2xl overflow-hidden hover:-translate-y-2 transition-transform duration-300 shadow-lg group">
+                    <div class="h-48 bg-gradient-to-br from-blue-900 to-indigo-900 flex items-center justify-center relative overflow-hidden">
+                        <div class="absolute inset-0 opacity-20 bg-[url('data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHdpZHRoPSIyMCIgaGVpZ2h0PSIyMCI+CjxyZWN0IHdpZHRoPSIyMCIgaGVpZ2h0PSIyMCIgZmlsbD0ibm9uZSI+PC9yZWN0Pgo8Y2lyY2xlIGN4PSIyIiBjeT0iMiIgcj0iMiIgZmlsbD0iI2ZmZiI+PC9jaXJjbGU+Cjwvc3ZnPg==')]"></div>
+                        <i class="fa-solid fa-tower-broadcast text-6xl text-white/80 group-hover:scale-110 transition-transform"></i>
+                    </div>
+                    <div class="p-6">
+                        <div class="flex gap-2 mb-3">
+                            <span class="px-2.5 py-1 rounded bg-blue-500/20 text-blue-400 text-xs font-bold uppercase tracking-wider">IoT</span>
+                            <span class="px-2.5 py-1 rounded bg-indigo-500/20 text-indigo-400 text-xs font-bold uppercase tracking-wider">AI</span>
+                        </div>
+                        <h3 class="text-xl font-bold text-white mb-2">Al-Geneina Station Upgrade</h3>
+                        <p class="text-sm text-slate-400 mb-4 line-clamp-3">Led the engineering execution to upgrade a Mansoura water station from classic control to a fully automated IoT architecture, integrating advanced AI models for predictive maintenance.</p>
+                        <div class="text-brand-light text-sm font-medium"><i class="fa-solid fa-location-dot mr-1"></i> Mansoura, Egypt</div>
+                    </div>
+                </div>
+
+                <!-- Project 2 -->
+                <div class="bg-dark-card border border-dark-border rounded-2xl overflow-hidden hover:-translate-y-2 transition-transform duration-300 shadow-lg group">
+                    <div class="h-48 bg-gradient-to-br from-purple-900 to-pink-900 flex items-center justify-center relative overflow-hidden">
+                        <i class="fa-solid fa-cubes text-6xl text-white/80 group-hover:scale-110 transition-transform"></i>
+                    </div>
+                    <div class="p-6">
+                        <div class="flex gap-2 mb-3">
+                            <span class="px-2.5 py-1 rounded bg-purple-500/20 text-purple-400 text-xs font-bold uppercase tracking-wider">3D Print</span>
+                            <span class="px-2.5 py-1 rounded bg-pink-500/20 text-pink-400 text-xs font-bold uppercase tracking-wider">CAD</span>
+                        </div>
+                        <h3 class="text-xl font-bold text-white mb-2">"From Screen to Machine"</h3>
+                        <p class="text-sm text-slate-400 mb-4 line-clamp-3">A specialized bootcamp focusing on digital fabrication, SolidWorks design, 3D printing, and laser cutting, enabling students to bring digital designs to physical reality.</p>
+                        <div class="text-purple-400 text-sm font-medium"><i class="fa-solid fa-users mr-1"></i> Creativa Hub</div>
+                    </div>
+                </div>
+
+                <!-- Project 3 -->
+                <div class="bg-dark-card border border-dark-border rounded-2xl overflow-hidden hover:-translate-y-2 transition-transform duration-300 shadow-lg group">
+                    <div class="h-48 bg-gradient-to-br from-emerald-900 to-teal-900 flex items-center justify-center relative overflow-hidden">
+                        <i class="fa-solid fa-robot text-6xl text-white/80 group-hover:scale-110 transition-transform"></i>
+                    </div>
+                    <div class="p-6">
+                        <div class="flex gap-2 mb-3">
+                            <span class="px-2.5 py-1 rounded bg-emerald-500/20 text-emerald-400 text-xs font-bold uppercase tracking-wider">Hardware</span>
+                            <span class="px-2.5 py-1 rounded bg-teal-500/20 text-teal-400 text-xs font-bold uppercase tracking-wider">Bootcamp</span>
+                        </div>
+                        <h3 class="text-xl font-bold text-white mb-2">Hardware & AI Bootcamps</h3>
+                        <p class="text-sm text-slate-400 mb-4 line-clamp-3">Comprehensive training tracks covering IoT systems, embedded electronics, and "AI Hardware"—bridging the gap between physical components and intelligent AI tools.</p>
+                        <div class="text-emerald-400 text-sm font-medium"><i class="fa-solid fa-microchip mr-1"></i> Hands-on Training</div>
+                    </div>
+                </div>
+
+            </div>
+        </div>
+    </section>
+
+    <!-- Skills Section -->
+    <section id="skills" class="py-20 bg-slate-900/50">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="text-center mb-16">
+                <h2 class="text-3xl font-bold text-white mb-4">Technical Arsenal</h2>
+                <div class="w-20 h-1 bg-brand-DEFAULT mx-auto rounded-full"></div>
+            </div>
+
+            <div class="grid grid-cols-1 md:grid-cols-2 gap-8">
+                
+                <!-- Skill Category 1 -->
+                <div class="bg-dark-card border border-dark-border p-8 rounded-3xl">
+                    <div class="flex items-center gap-4 mb-6">
+                        <div class="w-12 h-12 rounded-xl bg-brand-DEFAULT/20 text-brand-DEFAULT flex items-center justify-center text-xl">
+                            <i class="fa-solid fa-code-branch"></i>
+                        </div>
+                        <h3 class="text-2xl font-bold text-white">Software & AI</h3>
+                    </div>
+                    <div class="flex flex-wrap gap-3">
+                        <span class="px-4 py-2 bg-dark-bg border border-dark-border rounded-lg text-slate-300 text-sm font-medium hover:border-brand-DEFAULT transition-colors cursor-default">SolidWorks</span>
+                        <span class="px-4 py-2 bg-dark-bg border border-dark-border rounded-lg text-slate-300 text-sm font-medium hover:border-brand-DEFAULT transition-colors cursor-default">C/Embedded C</span>
+                        <span class="px-4 py-2 bg-dark-bg border border-dark-border rounded-lg text-slate-300 text-sm font-medium hover:border-brand-DEFAULT transition-colors cursor-default">Python</span>
+                        <span class="px-4 py-2 bg-dark-bg border border-dark-border rounded-lg text-slate-300 text-sm font-medium hover:border-brand-DEFAULT transition-colors cursor-default">LabVIEW</span>
+                        <span class="px-4 py-2 bg-dark-bg border border-dark-border rounded-lg text-slate-300 text-sm font-medium hover:border-brand-DEFAULT transition-colors cursor-default">MATLAB</span>
+                        <span class="px-4 py-2 bg-dark-bg border border-dark-border rounded-lg text-slate-300 text-sm font-medium hover:border-brand-DEFAULT transition-colors cursor-default">Proteus</span>
+                        <span class="px-4 py-2 bg-dark-bg border border-dark-border rounded-lg text-slate-300 text-sm font-medium hover:border-brand-DEFAULT transition-colors cursor-default">n8n (Automation)</span>
+                        <span class="px-4 py-2 bg-gradient-to-r from-indigo-500/20 to-purple-500/20 border border-indigo-500/30 rounded-lg text-indigo-300 text-sm font-medium hover:border-indigo-500 transition-colors cursor-default">Generative AI</span>
+                        <span class="px-4 py-2 bg-gradient-to-r from-indigo-500/20 to-purple-500/20 border border-indigo-500/30 rounded-lg text-indigo-300 text-sm font-medium hover:border-indigo-500 transition-colors cursor-default">AI Data Models</span>
+                        <span class="px-4 py-2 bg-gradient-to-r from-indigo-500/20 to-purple-500/20 border border-indigo-500/30 rounded-lg text-indigo-300 text-sm font-medium hover:border-indigo-500 transition-colors cursor-default">Prompt Engineering</span>
+                    </div>
+                </div>
+
+                <!-- Skill Category 2 -->
+                <div class="bg-dark-card border border-dark-border p-8 rounded-3xl">
+                    <div class="flex items-center gap-4 mb-6">
+                        <div class="w-12 h-12 rounded-xl bg-orange-500/20 text-orange-500 flex items-center justify-center text-xl">
+                            <i class="fa-solid fa-microchip"></i>
+                        </div>
+                        <h3 class="text-2xl font-bold text-white">Hardware & IoT</h3>
+                    </div>
+                    <div class="flex flex-wrap gap-3">
+                        <span class="px-4 py-2 bg-dark-bg border border-dark-border rounded-lg text-slate-300 text-sm font-medium hover:border-orange-500 transition-colors cursor-default">Arduino</span>
+                        <span class="px-4 py-2 bg-dark-bg border border-dark-border rounded-lg text-slate-300 text-sm font-medium hover:border-orange-500 transition-colors cursor-default">ESP32</span>
+                        <span class="px-4 py-2 bg-dark-bg border border-dark-border rounded-lg text-slate-300 text-sm font-medium hover:border-orange-500 transition-colors cursor-default">Microcontrollers</span>
+                        <span class="px-4 py-2 bg-dark-bg border border-dark-border rounded-lg text-slate-300 text-sm font-medium hover:border-orange-500 transition-colors cursor-default">Sensors</span>
+                        <span class="px-4 py-2 bg-dark-bg border border-dark-border rounded-lg text-slate-300 text-sm font-medium hover:border-orange-500 transition-colors cursor-default">3D Printers</span>
+                        <span class="px-4 py-2 bg-dark-bg border border-dark-border rounded-lg text-slate-300 text-sm font-medium hover:border-orange-500 transition-colors cursor-default">Laser Cutters</span>
+                        <span class="px-4 py-2 bg-dark-bg border border-dark-border rounded-lg text-slate-300 text-sm font-medium hover:border-orange-500 transition-colors cursor-default">CNC Machines</span>
+                        <span class="px-4 py-2 bg-dark-bg border border-dark-border rounded-lg text-slate-300 text-sm font-medium hover:border-orange-500 transition-colors cursor-default">Drones (Build/Flight)</span>
+                        <span class="px-4 py-2 bg-gradient-to-r from-orange-500/20 to-red-500/20 border border-orange-500/30 rounded-lg text-orange-300 text-sm font-medium hover:border-orange-500 transition-colors cursor-default">MQTT Protocols</span>
+                        <span class="px-4 py-2 bg-gradient-to-r from-orange-500/20 to-red-500/20 border border-orange-500/30 rounded-lg text-orange-300 text-sm font-medium hover:border-orange-500 transition-colors cursor-default">HiveMQ Cloud</span>
+                    </div>
+                </div>
+
+            </div>
+        </div>
+    </section>
+
+    <!-- Contact Section & Footer -->
+    <section id="contact" class="pt-20 pb-10 bg-dark-bg border-t border-dark-border">
+        <div class="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8 text-center">
+            <h2 class="text-3xl font-bold text-white mb-6">Let's Build Something Great</h2>
+            <p class="text-slate-400 mb-10 text-lg">Whether it's a new IoT project, a technical training bootcamp, or digital fabrication consultancy, I'm ready to collaborate.</p>
+            
+            <div class="flex flex-col sm:flex-row justify-center items-center gap-6 mb-16">
+                <a href="mailto:ibrahem@robotechspace.com" class="flex items-center gap-3 px-6 py-4 bg-dark-card border border-dark-border rounded-2xl hover:border-brand-DEFAULT transition-all group w-full sm:w-auto">
+                    <div class="w-10 h-10 rounded-full bg-brand-DEFAULT/10 text-brand-DEFAULT flex items-center justify-center group-hover:bg-brand-DEFAULT group-hover:text-white transition-colors">
+                        <i class="fa-solid fa-envelope"></i>
+                    </div>
+                    <div class="text-left">
+                        <p class="text-xs text-slate-500 font-medium uppercase tracking-wider">Email Me</p>
+                        <p class="text-slate-300 font-medium">ibrahem@robotechspace.com</p>
+                    </div>
+                </a>
+                
+                <a href="tel:+201017484254" class="flex items-center gap-3 px-6 py-4 bg-dark-card border border-dark-border rounded-2xl hover:border-brand-DEFAULT transition-all group w-full sm:w-auto">
+                    <div class="w-10 h-10 rounded-full bg-brand-DEFAULT/10 text-brand-DEFAULT flex items-center justify-center group-hover:bg-brand-DEFAULT group-hover:text-white transition-colors">
+                        <i class="fa-solid fa-phone"></i>
+                    </div>
+                    <div class="text-left">
+                        <p class="text-xs text-slate-500 font-medium uppercase tracking-wider">Call Me</p>
+                        <p class="text-slate-300 font-medium" dir="ltr">+20 1017484254</p>
+                    </div>
+                </a>
+            </div>
+
+            <!-- Footer -->
+            <div class="border-t border-dark-border pt-8 flex flex-col md:flex-row justify-between items-center gap-4">
+                <p class="text-slate-500 text-sm">
+                    &copy; <span id="year"></span> Ibrahim Youssef. All rights reserved.
+                </p>
+                <div class="flex items-center gap-4">
+                    <span class="text-slate-500 text-sm flex items-center gap-1"><i class="fa-solid fa-location-dot"></i> Beni Suef, Egypt</span>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <script>
+        // Set current year
+        document.getElementById('year').textContent = new Date().getFullYear();
+
+        // Mobile Menu Toggle
+        const btn = document.getElementById('mobile-menu-btn');
+        const menu = document.getElementById('mobile-menu');
+        const icon = btn.querySelector('i');
+
+        btn.addEventListener('click', () => {
+            menu.classList.toggle('hidden');
+            if(menu.classList.contains('hidden')){
+                icon.classList.remove('fa-xmark');
+                icon.classList.add('fa-bars');
+            } else {
+                icon.classList.remove('fa-bars');
+                icon.classList.add('fa-xmark');
+            }
+        });
+
+        // Close mobile menu on link click
+        menu.querySelectorAll('a').forEach(link => {
+            link.addEventListener('click', () => {
+                menu.classList.add('hidden');
+                icon.classList.remove('fa-xmark');
+                icon.classList.add('fa-bars');
+            });
+        });
+
+        // Navbar scroll effect
+        const navbar = document.getElementById('navbar');
+        window.addEventListener('scroll', () => {
+            if (window.scrollY > 20) {
+                navbar.classList.add('shadow-lg');
+                navbar.classList.replace('py-4', 'py-0');
+            } else {
+                navbar.classList.remove('shadow-lg');
+                navbar.classList.replace('py-0', 'py-4');
+            }
+        });
+    </script>
+</body>
+</html>
